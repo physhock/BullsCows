@@ -64,15 +64,15 @@ public class RiddleSolver {
         for (int i = 0; i < maxSizeAll; i++ ){
 
             Random rand = new Random();
-            int r = 0;
+            int r = rand.nextInt(4536);
 
-            if (usage.get(i)){
+            if (usage.get(r)){
 
-                bac = answer.sendAnswer(number.get(i));
-                usage.set(i,false);
+                bac = answer.sendAnswer(number.get(r));
+                usage.set(r,false);
                for (int j = 0; j < maxSizeActive; j++)
                {
-                   prediction[j] = number.get(i)[j];
+                   prediction[j] = number.get(r)[j];
                }
                 break;
 
@@ -132,7 +132,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls == 0 && cows < 1) usage.set(i,false);
+                if (bulls != 0 && cows < 1) usage.set(i,false);
             }
         }
 
@@ -165,7 +165,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls == 0 && cows < 2) usage.set(i,false);
+                if (bulls != 0 && cows < 2) usage.set(i,false);
             }
         }
 
@@ -198,7 +198,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls == 0 && cows < 3) usage.set(i,false);
+                if (bulls != 0 && cows < 3) usage.set(i,false);
             }
         }
 
@@ -232,7 +232,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 1 && cows == 0) usage.set(i,false);
+                if (bulls < 1 && cows != 0) usage.set(i,false);
             }
         }
 
@@ -266,7 +266,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 2 && cows == 0) usage.set(i,false);
+                if (bulls < 2 && cows != 0) usage.set(i,false);
             }
         }
 
@@ -300,7 +300,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 3 && cows == 0) usage.set(i,false);
+                if (bulls < 3 && cows != 0) usage.set(i,false);
             }
         }
 
@@ -546,15 +546,15 @@ public class RiddleSolver {
 
 
 
-         res = makeRes(bac);
+         res = makeRes(bac,cT);
 
         return res;
 
     }
 
-    public String makeRes(Integer[] bac ){
+    public String makeRes(Integer[] bac,int ostatok ){
         String res;
-        res = "Number: " + prediction[0] + prediction[1] + prediction[2] + prediction[3] + " Bulls: " + bac[0].toString() + " Cows: " + bac[1];
+        res = "Number: " + prediction[0] + prediction[1] + prediction[2] + prediction[3] + " Bulls: " + bac[0].toString() + " Cows: " + bac[1] + " ostatok: "+ostatok;
 
         return res;
     }
