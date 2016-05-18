@@ -10,17 +10,13 @@ public class GameRiddle {
 
 
     private static final int maxSizeActive = 4;
-
-    private ArrayList<Integer> user = new ArrayList<> (maxSizeActive);
+    private static Integer[] user = new Integer[maxSizeActive];
 
 
 
     public void getUserNum(Integer[] num){
 
-        user.add(0,num[0]);
-        user.add(1,num[1]);
-        user.add(2,num[2]);
-        user.add(3,num[3]);
+        user = num;
 
     }
 
@@ -33,7 +29,7 @@ public class GameRiddle {
         for (int i = 0; i < maxSizeActive; i++) {
             for (int j = 0; j < maxSizeActive; j++) {
 
-                if (user.get(i).equals(num[j]))
+                if (user[i].equals(num[j]))
                 {
                     if (i==j)
                         bulls++;

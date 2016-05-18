@@ -3,6 +3,7 @@ package com.example.bullscows;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Фёдор on 18.05.2016.
@@ -15,6 +16,10 @@ public class RiddleSolver {
 
     private ArrayList<Integer[]> number = new ArrayList<> (maxSizeAll);
     private ArrayList<Boolean> usage  = new ArrayList<>(maxSizeAll);
+    private GameRiddle answer = new GameRiddle();
+    private Integer[] prediction = new Integer[maxSizeActive];
+
+
 
 
     //Generate all 4536 numbers
@@ -47,6 +52,512 @@ public class RiddleSolver {
         }
     }
 
+
+    public String makeDecision(){
+
+        Integer[] bac = new Integer[2];
+        String res;
+        int cows;
+        int bulls;
+
+
+        for (int i = 0; i < maxSizeAll; i++ ){
+
+            Random rand = new Random();
+            int r = 0;
+
+            if (usage.get(i)){
+
+                bac = answer.sendAnswer(number.get(i));
+                usage.set(i,false);
+               for (int j = 0; j < maxSizeActive; j++)
+               {
+                   prediction[j] = number.get(i)[j];
+               }
+                break;
+
+            }
+
+
+        }
+
+        if (bac[0].equals(0) && bac[1].equals(0))
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]))
+                        {
+                            usage.set(i,false);
+                        }
+                    }
+
+                }
+            }
+        }
+
+
+
+        if (bac[0].equals(0) && bac[1].equals(1) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                            break;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls == 0 && cows < 1) usage.set(i,false);
+            }
+        }
+
+        if (bac[0].equals(0) && bac[1].equals(2) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls == 0 && cows < 2) usage.set(i,false);
+            }
+        }
+
+        if (bac[0].equals(0) && bac[1].equals(3) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls == 0 && cows < 3) usage.set(i,false);
+            }
+        }
+
+        if (bac[0].equals(1) && bac[1].equals(0) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                            break;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls < 1 && cows == 0) usage.set(i,false);
+            }
+        }
+
+        if (bac[0].equals(2) && bac[1].equals(0) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                            break;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls < 2 && cows == 0) usage.set(i,false);
+            }
+        }
+
+        if (bac[0].equals(3) && bac[1].equals(0) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                            break;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls < 3 && cows == 0) usage.set(i,false);
+            }
+        }
+
+
+
+        if (bac[0].equals(1) && bac[1].equals(1) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                            break;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls < 1 && cows < 1) usage.set(i,false);
+            }
+        }
+
+        if (bac[0].equals(1) && bac[1].equals(2) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls < 1 && cows < 2) usage.set(i,false);
+            }
+        }
+
+        if (bac[0].equals(1) && bac[1].equals(3) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls < 1 && cows < 3) usage.set(i,false);
+            }
+        }
+
+        if (bac[0].equals(2) && bac[1].equals(1) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                            break;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls < 2 && cows < 1) usage.set(i,false);
+            }
+        }
+
+
+        if (bac[0].equals(3) && bac[1].equals(1) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                            break;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls < 3 && cows < 1) usage.set(i,false);
+            }
+        }
+
+        if (bac[0].equals(2) && bac[1].equals(2) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                bulls = 0;
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                        }
+
+                    }
+
+
+                }
+
+                for (int p =0; p < maxSizeActive; p++)
+                {
+                    if (number.get(i)[p].equals(prediction[p]))
+                    {
+                        bulls++;
+                    }
+                }
+
+                if (bulls < 2 && cows < 2) usage.set(i,false);
+            }
+        }
+
+        if ( bac[1].equals(4) )
+        {
+            for (int i = 0; i < maxSizeAll; i++)
+            {
+                cows = 0;
+
+                for (int j = 0; j < maxSizeActive; j++)
+                {
+                    for (int k = 0; k <maxSizeActive; k++)
+                    {
+                        if (number.get(i)[j].equals(prediction[k]) && usage.get(i))
+                        {
+                            cows++;
+                        }
+
+                    }
+
+                }
+
+                if (cows < 4) usage.set(i,false);
+            }
+        }
+
+
+
+
+        int cT = 0;
+
+        for (int i = 0; i < maxSizeAll; i ++)
+        {
+            if (usage.get(i))
+            {
+                cT++;
+            }
+        }
+
+
+
+         res = makeRes(bac);
+
+        return res;
+
+    }
+
+    public String makeRes(Integer[] bac ){
+        String res;
+        res = "Number: " + prediction[0] + prediction[1] + prediction[2] + prediction[3] + " Bulls: " + bac[0].toString() + " Cows: " + bac[1];
+
+        return res;
+    }
 
 
 

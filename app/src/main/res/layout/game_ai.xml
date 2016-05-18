@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:text="check"
         android:id="@+id/button4"
-        android:onClick="check"
+        android:onClick="step"
         android:layout_marginTop="27dp"
         android:layout_below="@+id/num1"
         android:layout_centerHorizontal="true" />

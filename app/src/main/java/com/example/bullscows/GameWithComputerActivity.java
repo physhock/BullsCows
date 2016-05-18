@@ -18,12 +18,6 @@ import java.util.Random;
 
 public class GameWithComputerActivity extends AppCompatActivity {
 
-    private static final int maxSizeAll = 4536;
-    private static final int maxSizeActive = 4;
-
-    private ArrayList<Integer[]> number = new ArrayList<> (maxSizeAll);
-    private ArrayList<Boolean> usage  = new ArrayList<>(maxSizeAll);
-    private ArrayList<Integer> user = new ArrayList<> (maxSizeActive);
 
     private ListView results;
     private List<String> resultsData = new ArrayList<>();
@@ -143,13 +137,18 @@ public class GameWithComputerActivity extends AppCompatActivity {
 
     }
 
-    public void startGame()
-    {
+
+
+
+    public void step(View v){
+
+        resultsData.add(solver.makeDecision());
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,resultsData);
+        results.setAdapter(arrayAdapter);
+
+
 
     }
-
-
-
 
 
 }
