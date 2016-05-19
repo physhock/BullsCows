@@ -132,7 +132,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls != 0 && cows < 1) usage.set(i,false);
+                if (bulls != 0 && cows != 1) usage.set(i,false);
             }
         }
 
@@ -165,7 +165,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls != 0 && cows < 2) usage.set(i,false);
+                if (bulls != 0 && cows != 2) usage.set(i,false);
             }
         }
 
@@ -198,7 +198,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls != 0 && cows < 3) usage.set(i,false);
+                if (bulls != 0 && cows != 3) usage.set(i,false);
             }
         }
 
@@ -232,7 +232,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 1 && cows != 0) usage.set(i,false);
+                if (bulls != 1 && cows != 0) usage.set(i,false);
             }
         }
 
@@ -266,7 +266,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 2 && cows != 0) usage.set(i,false);
+                if (bulls != 2 && cows != 0) usage.set(i,false);
             }
         }
 
@@ -300,7 +300,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 3 && cows != 0) usage.set(i,false);
+                if (bulls != 3 && cows != 0) usage.set(i,false);
             }
         }
 
@@ -336,7 +336,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 1 && cows < 1) usage.set(i,false);
+                if (bulls != 1 && cows != 1) usage.set(i,false);
             }
         }
 
@@ -369,7 +369,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 1 && cows < 2) usage.set(i,false);
+                if (bulls != 1 && cows != 2) usage.set(i,false);
             }
         }
 
@@ -402,7 +402,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 1 && cows < 3) usage.set(i,false);
+                if (bulls != 1 && cows != 3) usage.set(i,false);
             }
         }
 
@@ -436,7 +436,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 2 && cows < 1) usage.set(i,false);
+                if (bulls != 2 && cows != 1) usage.set(i,false);
             }
         }
 
@@ -471,7 +471,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 3 && cows < 1) usage.set(i,false);
+                if (bulls != 3 && cows != 1) usage.set(i,false);
             }
         }
 
@@ -504,7 +504,7 @@ public class RiddleSolver {
                     }
                 }
 
-                if (bulls < 2 && cows < 2) usage.set(i,false);
+                if (bulls != 2 && cows != 2) usage.set(i,false);
             }
         }
 
@@ -527,7 +527,7 @@ public class RiddleSolver {
 
                 }
 
-                if (cows < 4) usage.set(i,false);
+                if (cows != 4) usage.set(i,false);
             }
         }
 
