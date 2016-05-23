@@ -10,26 +10,26 @@ public class GameRiddle {
 
 
     private static final int maxSizeActive = 4;
-    private static Integer[] user = new Integer[maxSizeActive];
+    private static int[] user = new int[maxSizeActive];
 
 
 
-    public void getUserNum(Integer[] num){
+    public void getUserNum(int[] num){
 
         user = num;
 
     }
 
-    public Integer[] sendAnswer(Integer[] num){
+    public int[] sendAnswer(int[] num){
 
-        Integer bulls = 0;
-        Integer cows = 0;
-        Integer[] BAC = new Integer[2];
+        int bulls = 0;
+        int cows = 0;
+        int[] bac = new int[2];
 
         for (int i = 0; i < maxSizeActive; i++) {
             for (int j = 0; j < maxSizeActive; j++) {
 
-                if (user[i].equals(num[j]))
+                if (user[i] == num[j])
                 {
                     if (i==j)
                         bulls++;
@@ -40,10 +40,10 @@ public class GameRiddle {
             }
         }
 
-        BAC[0] = bulls;
-        BAC[1] = cows;
+        bac[0] = bulls;
+        bac[1] = cows;
 
-        return BAC;
+        return bac;
     }
 
 

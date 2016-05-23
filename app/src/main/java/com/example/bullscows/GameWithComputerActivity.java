@@ -99,7 +99,7 @@ public class GameWithComputerActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
 
-
+        first.requestFocus();
         solver.makeNumbers();
 
 
@@ -120,7 +120,7 @@ public class GameWithComputerActivity extends AppCompatActivity {
     public void startGameAI(View v) {
         if (checkEmpty()) {return;}
 
-        Integer[] num = new Integer[4];
+        int[] num = new int[4];
 
         num[0] = Integer.parseInt(first.getText().toString());
         num[1] = Integer.parseInt(second.getText().toString());

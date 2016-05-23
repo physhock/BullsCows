@@ -45,6 +45,7 @@ public class GameActivity extends AppCompatActivity{
         third.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         fourth.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         check.setEnabled(false);
+        first.requestFocus();
 
 
         second.addTextChangedListener(new TextWatcher() {
@@ -111,7 +112,7 @@ public class GameActivity extends AppCompatActivity{
     public void startGame(View v) {
         if (checkEmpty()) {return;}
 
-        Integer[] num = new Integer[4];
+        int[] num = new int[4];
 
         num[0] = Integer.parseInt(first.getText().toString());
         num[1] = Integer.parseInt(second.getText().toString());
@@ -126,6 +127,7 @@ public class GameActivity extends AppCompatActivity{
         fourth.setText("");
         check.setEnabled(true);
         riddle.getUserNum(num);
+        first.requestFocus();
 
     }
 
@@ -133,10 +135,10 @@ public class GameActivity extends AppCompatActivity{
 
         if (checkEmpty()) {return;}
 
-        Integer[] num = new Integer[4];
-        Integer[] bac;
-        Integer cow;
-        Integer bull;
+        int[] num = new int[4];
+        int[] bac;
+        int cow;
+        int bull;
 
         num[0] = Integer.parseInt(first.getText().toString());
         num[1] = Integer.parseInt(second.getText().toString());
@@ -150,11 +152,11 @@ public class GameActivity extends AppCompatActivity{
 
 
 
-        if (bull.equals(4)) {
+        if (bull == 4) {
             resultsData.add("YOU WIN");
         }
         else {
-            resultsData.add(num[0].toString() + num[1].toString() + num[2].toString() + num[3].toString() + " bulls: " + bull + " cows: " + cow);
+            resultsData.add(Integer.toString(num[0]) + Integer.toString(num[1]) + Integer.toString(num[2])+ Integer.toString(num[3]) + " bulls: " + bull + " cows: " + cow);
         }
 
         first.setText("");
@@ -165,6 +167,7 @@ public class GameActivity extends AppCompatActivity{
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,resultsData);
 
         results.setAdapter(arrayAdapter);
+        first.requestFocus();
 
     }
 
