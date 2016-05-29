@@ -47,6 +47,16 @@ public class GameActivity extends AppCompatActivity{
         check.setEnabled(false);
         first.requestFocus();
 
+        first.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {second.requestFocus();}
+        });
 
         second.addTextChangedListener(new TextWatcher() {
                                           @Override
@@ -62,7 +72,7 @@ public class GameActivity extends AppCompatActivity{
                                           }
 
                                           @Override
-                                          public void afterTextChanged(Editable s) {}
+                                          public void afterTextChanged(Editable s) {third.requestFocus();}
                                       });
 
         third.addTextChangedListener(new TextWatcher() {
@@ -78,7 +88,7 @@ public class GameActivity extends AppCompatActivity{
                                           }
 
                                           @Override
-                                          public void afterTextChanged(Editable s) {}
+                                          public void afterTextChanged(Editable s) {fourth.requestFocus();}
                                       });
 
         fourth.addTextChangedListener(new TextWatcher() {

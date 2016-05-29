@@ -18,6 +18,7 @@ public class RiddleSolver {
     private ArrayList<Boolean> usage  = new ArrayList<>(maxSizeAll);
     private GameRiddle answer = new GameRiddle();
     private int[] prediction = new int[maxSizeActive];
+    private int turn = 0;
 
 
 
@@ -57,9 +58,6 @@ public class RiddleSolver {
 
         int[] bac = new int[2];
         String res;
-        int cows;
-        int bulls;
-
 
         for (int i = 0; i < maxSizeAll; i++ ){
 
@@ -80,6 +78,21 @@ public class RiddleSolver {
 
 
         }
+
+        markNum(bac);
+
+        res = makeRes(bac);
+
+        turn++;
+        return res;
+
+    }
+
+    public void markNum(int[] bac)
+    {
+
+        int cows;
+        int bulls;
 
         for (int i = 0; i < maxSizeAll; i++)
         {
@@ -111,42 +124,17 @@ public class RiddleSolver {
 
             if (bulls != bac[0] && cows != bac[1]) usage.set(i,false);
         }
-
-
-
-        int balance = 0;
-
-        for (int i = 0; i < maxSizeAll; i ++)
-        {
-            if (usage.get(i))
-            {
-                balance++;
-            }
-        }
-
-
-        if (bac[0] == 4)
-        {
-            res = makeRes(bac, 0);
-        }
-        else
-        {
-            res = makeRes(bac, balance);
-        }
-
-        return res;
-
     }
 
-    public String makeRes(int[] bac,int balance){
+    public String makeRes(int[] bac){
         String res;
-        if (balance == 0)
+        if (bac[0] == 4)
         {
             res = "Number: " + prediction[0] + prediction[1] + prediction[2] + prediction[3] + " WELL DONE COMPUTER ";
         }
         else
         {
-            res = "Number: " + prediction[0] + prediction[1] + prediction[2] + prediction[3] + " Bulls: " + bac[0] + " Cows: " + bac[1] + " ostatok: " + balance;
+            res ="Turn: " + turn + " Number: " + prediction[0] + prediction[1] + prediction[2] + prediction[3] + " Bulls: " + bac[0] + " Cows: " + bac[1];
         }
         return res;
     }

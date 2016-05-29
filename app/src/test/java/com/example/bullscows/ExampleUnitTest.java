@@ -24,16 +24,16 @@ public class ExampleUnitTest {
 
         for (int i=0; i < 4; i++)
         {
-            num[i] = i++;
+            num[i] = i+1;
         }
 
         riddle.getUserNum(num);
 
         int[] test = new int[4];
-        num[0] = 4;
-        num[1] = 2;
-        num[2] = 3;
-        num[3] = 1;
+        test[0] = 4;
+        test[1] = 2;
+        test[2] = 3;
+        test[3] = 1;
 
         int[] bacT = new int[2];
         bacT[0] = 2;
@@ -54,9 +54,9 @@ public class ExampleUnitTest {
 
         for (int i=0; i < 4; i++)
         {
-            num[i] = i++;
+            num[i] = i+1;
         }
-
+        solver.makeNumbers();
         riddle.getUserNum(num);
         do {
             res = solver.makeDecision();

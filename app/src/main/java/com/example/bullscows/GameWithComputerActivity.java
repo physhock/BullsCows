@@ -50,6 +50,17 @@ public class GameWithComputerActivity extends AppCompatActivity {
         third.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         fourth.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
+        first.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {second.requestFocus();}
+        });
+
         second.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -64,7 +75,7 @@ public class GameWithComputerActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {third.requestFocus();}
         });
 
         third.addTextChangedListener(new TextWatcher() {
@@ -80,7 +91,7 @@ public class GameWithComputerActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {fourth.requestFocus();}
         });
 
         fourth.addTextChangedListener(new TextWatcher() {
