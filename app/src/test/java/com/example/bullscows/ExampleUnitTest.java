@@ -62,6 +62,5 @@ public class ExampleUnitTest {
             res = solver.makeDecision();
         }while (!res.equals("Number: " + num[0] + num[1] + num[2] + num[3] + " WELL DONE COMPUTER "));
 
-
     }
 }
